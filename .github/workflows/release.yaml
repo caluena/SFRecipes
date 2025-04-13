@@ -1,8 +1,10 @@
 name: Deploy project
 
 on:
-  release:
-    types: [published]
+  pull_request:
+    types: [closed]
+    paths:
+      - 'force-app/**'
 
 jobs:
   deploy-release:
