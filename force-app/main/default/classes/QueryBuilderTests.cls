@@ -315,7 +315,7 @@ public class QueryBuilderTests {
 				Opportunity.Id
 			})
 			.selectRelatedField(Account.SObjectType, Account.Name)
-            .orderBy(new List<Object>{ (Object)'Name', (Object)Account.Name })
+            .orderBy(new List<Object>{ (Object) Opportunity.Name, (Object) 'Account.Name' })
 		.toString();
 
 		Test.startTest();
