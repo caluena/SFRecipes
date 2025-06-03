@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>MainContact__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <label>Contato principal</label>
+    <referenceTo>Contact</referenceTo>
+    <relationshipLabel>Oportunidades</relationshipLabel>
+    <relationshipName>Oportunidades</relationshipName>
+    <required>false</required>
+    <trackFeedHistory>false</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>
