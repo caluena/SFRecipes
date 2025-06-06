@@ -1,7 +1,7 @@
 /**
  * A class utilselectCountg the builder design pattern to abstract the building of queries.
  */
-public class QueryBuilder {
+public class QB_QueryBuilder {
 	// The fully built SOQL query
 	private String query;
 
@@ -12,7 +12,7 @@ public class QueryBuilder {
 	private SObjectType entity;
 
 	// The 'WHERE' clause
-	private QueryCondition conditionExpression;
+	private QB_QueryCondition conditionExpression;
 
 	// The 'ORDER BY' clause
 	private List<String> orderBy;
@@ -33,7 +33,7 @@ public class QueryBuilder {
 	public final static String ASCENDING = 'ASC';
 	public final static String DESCENDING = 'DESC';
 
-	public QueryBuilder(SObjectType objectType) {
+	public QB_QueryBuilder(SObjectType objectType) {
 		query = '';
 		entity = objectType;
 		selectedFields = new Set<String>();
@@ -49,7 +49,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectField(SObjectField field) {
+	public QB_QueryBuilder selectField(SObjectField field) {
 		selectedFields.add(field.getDescribe().getName());
 		return this;
 	}
@@ -61,7 +61,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectField(String field) {
+	public QB_QueryBuilder selectField(String field) {
 		selectedFields.add(field);
 		return this;
 	}
@@ -73,7 +73,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectField(Object field) {
+	public QB_QueryBuilder selectField(Object field) {
 		if(field instanceof SObjectField)
 		{
 			selectField((SObjectField) field);
@@ -93,7 +93,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectField(SObjectField field, String alias) {
+	public QB_QueryBuilder selectField(SObjectField field, String alias) {
 		selectedFields.add(field.getDescribe().getName() + ' ' + alias);
 		return this;
 	}
@@ -106,7 +106,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectField(String field, String alias) {
+	public QB_QueryBuilder selectField(String field, String alias) {
 		selectedFields.add(field + ' ' + alias);
 		return this;
 	}
@@ -119,7 +119,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectField(Object field, String alias) {
+	public QB_QueryBuilder selectField(Object field, String alias) {
 		String fieldName;
 
 		if(field instanceof SObjectField)
@@ -142,7 +142,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectFields(List<SObjectField> fields) {
+	public QB_QueryBuilder selectFields(List<SObjectField> fields) {
 		for(SObjectField field : fields) {
 			selectField(field);
 		}
@@ -157,7 +157,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectFields(Set<String> fields) {
+	public QB_QueryBuilder selectFields(Set<String> fields) {
 		for(String field : fields) {
 			selectField(field);
 		}
@@ -172,7 +172,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectFields(List<Object> fields) {
+	public QB_QueryBuilder selectFields(List<Object> fields) {
 		for(Object field : fields) {
 			if(field instanceof SObjectField)
 			{
@@ -194,7 +194,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectFields(List<String> fields) {
+	public QB_QueryBuilder selectFields(List<String> fields) {
 		for(String field : fields) {
 			selectField(field);
 		}
@@ -210,7 +210,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectRelatedField(SObjectType objectType, SObjectField field) {
+	public QB_QueryBuilder selectRelatedField(SObjectType objectType, SObjectField field) {
 		selectedFields.add(objectType.getDescribe().getName() + '.' + field.getDescribe().getName());
 		return this;
 	}
@@ -223,7 +223,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder selectRelatedField(SObjectField lookupField, SObjectField field) {
+	public QB_QueryBuilder selectRelatedField(SObjectField lookupField, SObjectField field) {
         Schema.DescribeFieldResult describe = lookupField.getDescribe();
         
 		if (describe.getType() != Schema.DisplayType.REFERENCE) {
@@ -244,67 +244,67 @@ public class QueryBuilder {
 	 * 				Aggregate Functions
 	/* -=-=-=-=-=-=-=-=--=-=-=-=-=-=-=-=--=-=-=-=-=-=-
 	*/
-	public QueryBuilder selectAverageField(SObjectField field) {
+	public QB_QueryBuilder selectAverageField(SObjectField field) {
 		selectedFields.add('AVG(' + field.getDescribe().getName() + ')');
 		return this;
 	}
 
-	public QueryBuilder selectAverageField(SObjectField field, String alias) {
+	public QB_QueryBuilder selectAverageField(SObjectField field, String alias) {
 		selectedFields.add('AVG(' + field.getDescribe().getName() + ') ' + alias);
 		return this;
 	}
 
-	public QueryBuilder selectCount() {
+	public QB_QueryBuilder selectCount() {
 		selectedFields.add('COUNT()');
 		return this;
 	}
 
-	public QueryBuilder selectCountField(SObjectField field) {
+	public QB_QueryBuilder selectCountField(SObjectField field) {
 		selectedFields.add('COUNT(' + field.getDescribe().getName() + ')');
 		return this;
 	}
 
-	public QueryBuilder selectCountField(SObjectField field, String alias) {
+	public QB_QueryBuilder selectCountField(SObjectField field, String alias) {
 		selectedFields.add('COUNT(' + field.getDescribe().getName() + ') ' + alias);
 		return this;
 	}
 
-	public QueryBuilder selectCountDistinctField(SObjectField field) {
+	public QB_QueryBuilder selectCountDistinctField(SObjectField field) {
 		selectedFields.add('COUNT_DISTINCT(' + field.getDescribe().getName() + ')');
 		return this;
 	}
 
-	public QueryBuilder selectCountDistinctField(SObjectField field, String alias) {
+	public QB_QueryBuilder selectCountDistinctField(SObjectField field, String alias) {
 		selectedFields.add('COUNT_DISTINCT(' + field.getDescribe().getName() + ') ' + alias);
 		return this;
 	}
 
-	public QueryBuilder selectMinField(SObjectField field) {
+	public QB_QueryBuilder selectMinField(SObjectField field) {
 		selectedFields.add('MIN(' + field.getDescribe().getName() + ')');
 		return this;
 	}
 
-	public QueryBuilder selectMinField(SObjectField field, String alias) {
+	public QB_QueryBuilder selectMinField(SObjectField field, String alias) {
 		selectedFields.add('MIN(' + field.getDescribe().getName() + ') ' + alias);
 		return this;
 	}
 
-	public QueryBuilder selectMaxField(SObjectField field) {
+	public QB_QueryBuilder selectMaxField(SObjectField field) {
 		selectedFields.add('MAX(' + field.getDescribe().getName() + ')');
 		return this;
 	}
 
-	public QueryBuilder selectMaxField(SObjectField field, String alias) {
+	public QB_QueryBuilder selectMaxField(SObjectField field, String alias) {
 		selectedFields.add('MAX(' + field.getDescribe().getName() + ') ' + alias);
 		return this;
 	}
 
-	public QueryBuilder selectSumField(SObjectField field) {
+	public QB_QueryBuilder selectSumField(SObjectField field) {
 		selectedFields.add('SUM(' + field.getDescribe().getName() + ')');
 		return this;
 	}
 
-	public QueryBuilder selectSumField(SObjectField field, String alias) {
+	public QB_QueryBuilder selectSumField(SObjectField field, String alias) {
 		selectedFields.add('SUM(' + field.getDescribe().getName() + ') ' + alias);
 		return this;
 	}
@@ -321,7 +321,7 @@ public class QueryBuilder {
  	* @param   aQueryBuilder   A QueryBuilder instance representing the subquery to be added
  	* @return  QueryBuilder    The current QueryBuilder instance with the subquery included
  	*/
-	public QueryBuilder subQuery(SObjectType parentType, QueryBuilder aQueryBuilder) {
+	public QB_QueryBuilder subQuery(SObjectType parentType, QB_QueryBuilder aQueryBuilder) {
 		String subQuery = aQueryBuilder.toString();
 		SObjectType childType = aQueryBuilder.getEntity();
 	
@@ -397,11 +397,11 @@ public class QueryBuilder {
 	/**
 	 * Handles the creation of the 'WHERE' clause segment
 	 *
-	 * @param conditionExpression		A reference to a QueryCondition containing logical statements
+	 * @param conditionExpression		A reference to a QB_QueryCondition containing logical statements
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder whereClause(QueryCondition conditionExpression) {
+	public QB_QueryBuilder whereClause(QB_QueryCondition conditionExpression) {
 		this.conditionExpression = conditionExpression;
 		return this;
 	}
@@ -413,7 +413,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder take(Integer limitAmount) {
+	public QB_QueryBuilder take(Integer limitAmount) {
 		this.limitAmount = limitAmount;
 		return this;
 	}
@@ -425,7 +425,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder skip(Integer offsetAmount) {
+	public QB_QueryBuilder skip(Integer offsetAmount) {
 		this.offsetAmount = offsetAmount;
 		return this;
 	}
@@ -437,7 +437,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder groupBy(SObjectField field) {
+	public QB_QueryBuilder groupBy(SObjectField field) {
 		this.groupBy.add(field.getDescribe().getName());
 		return this;
 	}
@@ -449,7 +449,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder groupBy(String field) {
+	public QB_QueryBuilder groupBy(String field) {
 		this.groupBy.add(field);
 		return this;
 	}
@@ -461,7 +461,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder groupBy(Object field) {
+	public QB_QueryBuilder groupBy(Object field) {
 		if(field instanceof SObjectField)
 		{
 			groupBy((SObjectField) field);
@@ -480,7 +480,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder groupBy(List<Object> fields) {
+	public QB_QueryBuilder groupBy(List<Object> fields) {
 		for(Object field : fields)
 		{
 			if(field instanceof SObjectField)
@@ -504,7 +504,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder orderBy(SObjectType objectType, SObjectField field) {
+	public QB_QueryBuilder orderBy(SObjectType objectType, SObjectField field) {
 		this.orderBy.add(objectType.getDescribe().getName() + '.' + field.getDescribe().getName());
 		this.sortingOption.add(null);
 		return this;
@@ -517,7 +517,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder orderBy(SObjectField field) {
+	public QB_QueryBuilder orderBy(SObjectField field) {
 		this.orderBy.add(field.getDescribe().getName());
 		this.sortingOption.add(null);
 		return this;
@@ -530,7 +530,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder orderBy(String field) {
+	public QB_QueryBuilder orderBy(String field) {
 		this.orderBy.add(field);
 		this.sortingOption.add(null);
 		return this;
@@ -543,7 +543,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder orderBy(Object field) {
+	public QB_QueryBuilder orderBy(Object field) {
 		if(field instanceof SObjectField)
 		{
 			orderBy((SObjectField) field);
@@ -564,7 +564,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder orderBy(List<Object> fields) {
+	public QB_QueryBuilder orderBy(List<Object> fields) {
 		for(Object field : fields)
 		{
 			if(field instanceof SObjectField)
@@ -588,7 +588,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder orderBy(String field, String sortingOption) {
+	public QB_QueryBuilder orderBy(String field, String sortingOption) {
 		this.orderBy.add(field);
 		this.sortingOption.add(sortingOption);
 		return this;
@@ -602,7 +602,7 @@ public class QueryBuilder {
 	 *
 	 * @return	The current instance of the QueryBuilder
 	 */
-	public QueryBuilder orderBy(SObjectField field, String sortingOption) {
+	public QB_QueryBuilder orderBy(SObjectField field, String sortingOption) {
 		this.orderBy.add(field.getDescribe().getName());
 		this.sortingOption.add(sortingOption);
 		return this;
@@ -616,7 +616,7 @@ public class QueryBuilder {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryBuilder orderBy(SObjectType objectType, SObjectField field, String sortingOption) {
+	public QB_QueryBuilder orderBy(SObjectType objectType, SObjectField field, String sortingOption) {
 		this.orderBy.add(objectType.getDescribe().getName() + '.' + field.getDescribe().getName());
 		this.sortingOption.add(sortingOption);
 		return this;
