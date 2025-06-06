@@ -213,7 +213,7 @@ public class QB_QueryBuilderTests {
 				Opportunity.Id
 			})
 			.selectRelatedField(Account.SObjectType, Account.Name)
-            .orderBy(Account.SObjectType, Account.Name, QueryBuilder.DESCENDING)
+            .orderBy(Account.SObjectType, Account.Name, QB_QueryBuilder.DESCENDING)
 		.toString();
 
 		Test.startTest();
@@ -264,7 +264,7 @@ public class QB_QueryBuilderTests {
 				Opportunity.Id
 			})
 			.selectRelatedField(Account.SObjectType, Account.Name)
-            .orderBy('Account.Name', QueryBuilder.ASCENDING)
+            .orderBy('Account.Name', QB_QueryBuilder.ASCENDING)
 		.toString();
 
 		Test.startTest();
@@ -695,8 +695,8 @@ public class QB_QueryBuilderTests {
 			.whereClause(new QB_QueryCondition()
 				.isNotNull(Opportunity.NextStep)
 			)
-			.orderBy(Opportunity.Name, QueryBuilder.ASCENDING)
-            .orderBy(Opportunity.StageName, QueryBuilder.ASCENDING)
+			.orderBy(Opportunity.Name, QB_QueryBuilder.ASCENDING)
+            .orderBy(Opportunity.StageName, QB_QueryBuilder.ASCENDING)
 			.toString();
 
 		Test.startTest();
@@ -801,7 +801,7 @@ public class QB_QueryBuilderTests {
 					.orCondition(new QB_QueryCondition().isNotNull(Opportunity.Type))
 				)
 			)
-			.orderBy(Opportunity.Name, QueryBuilder.ASCENDING)
+			.orderBy(Opportunity.Name, QB_QueryBuilder.ASCENDING)
 			.take(5)
 			.skip(3)
 		.toString();
