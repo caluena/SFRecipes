@@ -1,10 +1,10 @@
 @IsTest
-public class QueryBuilderTests {
+public class QB_QueryBuilderTests {
 	private static Boolean isValid = true;
 
 	@IsTest
 	public static void testEntityName() {
-		SObjectType entity = new QueryBuilder(Contact.SObjectType)
+		SObjectType entity = new QB_QueryBuilder(Contact.SObjectType)
 			.selectField(Contact.Id)
 			.getEntity();
 
@@ -13,7 +13,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testBasicSelectQuery() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
@@ -31,7 +31,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testBasicSelectQueryWithStringSet() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new Set<String>{
 				'Id',
 				'Name',
@@ -49,7 +49,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testBasicSelectQueryWithSubQuery() {
-		QueryBuilder contactQuery = new QueryBuilder(Contact.SObjectType)
+		QB_QueryBuilder contactQuery = new QB_QueryBuilder(Contact.SObjectType)
         	.selectFields(new SObjectField[] {
 				Contact.Id,
 				Contact.FirstName,
@@ -57,7 +57,7 @@ public class QueryBuilderTests {
 				Contact.Email
 			});
 
-		String query = new QueryBuilder(Account.SObjectType)
+		String query = new QB_QueryBuilder(Account.SObjectType)
 			.selectFields(new SObjectField[] {
 				Account.Id,
 				Account.Name,
@@ -75,7 +75,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testBasicSelectQueryWithStringList() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new List<String>{
 				'Id',
 				'Name',
@@ -93,7 +93,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testBasicSelectQueryWithObjectField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new List<Object>{
 				(Object)Opportunity.Id,
 				(Object)'Name',
@@ -111,7 +111,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testBasicSelectQueryWithObjectsField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectCountField(Opportunity.Id)
 			.selectField(Opportunity.Name, 'Nome')
             .selectField((Object)Opportunity.AccountId, 'Conta')
@@ -134,7 +134,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testGroupSelectQueryWithObjectsField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectCountField(Opportunity.Id)
 			.selectField(Opportunity.Name, 'Nome')
 			.selectField('CloseDate', 'Fechamento')
@@ -152,7 +152,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testRelatedFieldSelectQuery() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -174,7 +174,7 @@ public class QueryBuilderTests {
         
 		Test.startTest();
         try {
-            String query = new QueryBuilder(Opportunity.SObjectType)
+            String query = new QB_QueryBuilder(Opportunity.SObjectType)
 					.selectFields(new SObjectField[] {
 						Opportunity.Id
 					})
@@ -191,7 +191,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testBasicSelectQueryWithOrderBySObjectTypeAndSObjectField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -208,7 +208,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testBasicSelectQueryWithOrderBySObjectTypeAndSObjectFieldAndSortingOption() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -225,7 +225,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testBasicSelectQueryWithOrderBySObjectField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -242,7 +242,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testBasicSelectQueryWithOrderByStringField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -259,7 +259,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testBasicSelectQueryWithOrderByStringFieldAndSortingOption() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -276,7 +276,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testBasicSelectQueryWithOrderByObjectField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -293,7 +293,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testBasicSelectQueryWithOrderByObjectStringField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -310,7 +310,7 @@ public class QueryBuilderTests {
     
     @IsTest
 	public static void testBasicSelectQueryWithOrderByListObjectField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id
 			})
@@ -327,14 +327,14 @@ public class QueryBuilderTests {
 	
 	@IsTest
 	public static void testWhereClauseQuery() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.equals(Opportunity.Name, 'Test Opportunity')
 				.equals(Opportunity.CloseDate, Date.newInstance(2020, 07, 07))
 				.notEquals(Opportunity.Name, 'My Opportunity')
@@ -395,14 +395,14 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testWhereClauseQueryDayOnlyDate() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.equals(Opportunity.Name, 'Test Opportunity')
 				.equals(Opportunity.CloseDate, Date.newInstance(2020, 07, 07))
 				.notEquals(Opportunity.Name, 'My Opportunity')
@@ -463,14 +463,14 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testWhereClauseQueryWithStringField() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.equals('Name', 'Test Opportunity')
 				.equals(Opportunity.IsClosed, false)
 				.equals(Opportunity.CloseDate, Date.newInstance(2020, 07, 07))
@@ -535,14 +535,14 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testWhereClauseQueryWithStringValues() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.equals('Name', 'Test Opportunity')
 				.equals(Opportunity.IsClosed, false)
 				.equals(Opportunity.CloseDate, Date.newInstance(2024, 07, 07))
@@ -607,9 +607,9 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testMultiPicklistQuery() {
-		String query = new QueryBuilder(Idea.SObjectType)
+		String query = new QB_QueryBuilder(Idea.SObjectType)
 			.selectField(Idea.Id)
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.including(Idea.Categories, new List<String>{ 'Finance', 'Product' })
 				.excluding(Idea.Categories, new List<String>{ 'Marketing' })
 			)
@@ -630,20 +630,20 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testAndGroupedOrQuery() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
-				.group(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
+				.group(new QB_QueryCondition()
 					.isNotNull(Opportunity.NextStep)
 					.isFalse(Opportunity.IsPrivate)
 				)
-				.orCondition(new QueryCondition().isNotNull(Opportunity.ForecastCategoryName))
-				.orGroup(new QueryCondition().
+				.orCondition(new QB_QueryCondition().isNotNull(Opportunity.ForecastCategoryName))
+				.orGroup(new QB_QueryCondition().
 					isFalse(Opportunity.IsClosed))
 			)
 			.toString();
@@ -662,14 +662,14 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testTodayQuery() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.isNotNull(Opportunity.NextStep)
 				.equals(Opportunity.CloseDate, Date.today())
 			)
@@ -685,14 +685,14 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testSortAscending() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.isNotNull(Opportunity.NextStep)
 			)
 			.orderBy(Opportunity.Name, QueryBuilder.ASCENDING)
@@ -708,14 +708,14 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testLimitQuery() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.isNotNull(Opportunity.NextStep)
 			)
 			.take(5)
@@ -730,7 +730,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void basicSelectAggregateFunctions() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectAverageField(Opportunity.Amount)
 			.selectMinField(Opportunity.Amount)
 			.selectMaxField(Opportunity.Amount)
@@ -748,7 +748,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void basicSelectAggregateFunctionsCount() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectCount()
 			.toString();
 
@@ -762,7 +762,7 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void basicSelectAggregateFunctionsWithAlias() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectAverageField(Opportunity.Amount, 'Average_Amount')
 			.selectMinField(Opportunity.Amount, 'Min_Amount')
 			.selectMaxField(Opportunity.Amount, 'Max_Amount')
@@ -780,25 +780,25 @@ public class QueryBuilderTests {
 
 	@IsTest
 	public static void testComplexSingleObjectQuery() {
-		String query = new QueryBuilder(Opportunity.SObjectType)
+		String query = new QB_QueryBuilder(Opportunity.SObjectType)
 			.selectFields(new SObjectField[] {
 				Opportunity.Id,
 				Opportunity.Name,
 				Opportunity.CloseDate,
 				Opportunity.StageName
 			})
-			.whereClause(new QueryCondition()
+			.whereClause(new QB_QueryCondition()
 				.isToday(Opportunity.CloseDate)
 				.equals(Opportunity.StageName, 'Closed Won')
 				.greaterThan(Opportunity.Amount, 100)
-				.andCondition(new QueryCondition().isNotNull(Opportunity.LeadSource))
-				.andGroup(new QueryCondition()
-					.group(new QueryCondition()
+				.andCondition(new QB_QueryCondition().isNotNull(Opportunity.LeadSource))
+				.andGroup(new QB_QueryCondition()
+					.group(new QB_QueryCondition()
 						.isNotNull(Opportunity.NextStep)
 						.isTrue(Opportunity.IsPrivate)
 						.isLike(Opportunity.Name, '%(IT)%')
 					)
-					.orCondition(new QueryCondition().isNotNull(Opportunity.Type))
+					.orCondition(new QB_QueryCondition().isNotNull(Opportunity.Type))
 				)
 			)
 			.orderBy(Opportunity.Name, QueryBuilder.ASCENDING)
