@@ -1,7 +1,7 @@
-public class QueryCondition implements QueryConditionI {
+public class QB_QueryCondition implements QueryConditionI {
 	private Set<String> statements;
 
-	public QueryCondition() {
+	public QB_QueryCondition() {
 		statements = new Set<String>();
 	}
 
@@ -78,7 +78,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition equals(SObjectField field, String value) {
+	public QB_QueryCondition equals(SObjectField field, String value) {
 		addStatement(field, '=', value);
 		return this;
 	}
@@ -91,7 +91,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition equals(SObjectField field, Date aDate) {
+	public QB_QueryCondition equals(SObjectField field, Date aDate) {
 		addStatement(field, '=', aDate);
 		return this;
 	}
@@ -104,7 +104,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition equals(SObjectField field, Boolean bValue) {
+	public QB_QueryCondition equals(SObjectField field, Boolean bValue) {
 		addStatement(field, '=', bValue);
 		return this;
 	}
@@ -117,7 +117,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition equals(String field, String value) {
+	public QB_QueryCondition equals(String field, String value) {
 		addStatement(field, '=', value);
 		return this;
 	}
@@ -130,7 +130,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition notEquals(SObjectField field, String value) {
+	public QB_QueryCondition notEquals(SObjectField field, String value) {
 		addStatement(field, '!=', value);
 		return this;
 	}
@@ -143,7 +143,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition notEquals(SObjectField field, Date aDate) {
+	public QB_QueryCondition notEquals(SObjectField field, Date aDate) {
 		addStatement(field, '!=', aDate);
 		return this;
 	}
@@ -156,7 +156,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition notEquals(String field, String value) {
+	public QB_QueryCondition notEquals(String field, String value) {
 		addStatement(field, '!=', value);
 		return this;
 	}
@@ -168,7 +168,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isTrue(SObjectField field) {
+	public QB_QueryCondition isTrue(SObjectField field) {
 		addStatement(field, '=', true);
 		return this;
 	}
@@ -180,7 +180,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isFalse(SObjectField field) {
+	public QB_QueryCondition isFalse(SObjectField field) {
 		addStatement(field, '=', false);
 		return this;
 	}
@@ -192,7 +192,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isNull(SObjectField field) {
+	public QB_QueryCondition isNull(SObjectField field) {
 		this.statements.add(field + ' = ' + null);
 		return this;
 	}
@@ -204,7 +204,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isNull(String field) {
+	public QB_QueryCondition isNull(String field) {
 		this.statements.add(field + ' = ' + null);
 		return this;
 	}
@@ -216,7 +216,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isNotNull(SObjectField field) {
+	public QB_QueryCondition isNotNull(SObjectField field) {
 		this.statements.add(field + ' != ' + null);
 		return this;
 	}
@@ -228,7 +228,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isNotNull(String value) {
+	public QB_QueryCondition isNotNull(String value) {
 		this.statements.add(value + ' != ' + null);
 		return this;
 	}
@@ -241,7 +241,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition greaterThan(SObjectField field, Integer value) {
+	public QB_QueryCondition greaterThan(SObjectField field, Integer value) {
 		addStatement(field, '>', value);
 		return this;
 	}
@@ -254,7 +254,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition greaterThan(SObjectField field, Date aDate) {
+	public QB_QueryCondition greaterThan(SObjectField field, Date aDate) {
 		addStatement(field, '>', aDate);
 		return this;
 	}
@@ -267,7 +267,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition greaterThanAndEqualTo(SObjectField field, Integer value) {
+	public QB_QueryCondition greaterThanAndEqualTo(SObjectField field, Integer value) {
 		addStatement(field, '>=', value);
 		return this;
 	}
@@ -280,7 +280,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition greaterThanAndEqualTo(SObjectField field, Date aDate) {
+	public QB_QueryCondition greaterThanAndEqualTo(SObjectField field, Date aDate) {
 		addStatement(field, '>=', aDate);
 		return this;
 	}
@@ -293,7 +293,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition greaterThanAndEqualTo(String value, Date aDate) {
+	public QB_QueryCondition greaterThanAndEqualTo(String value, Date aDate) {
 		addStatement(value, '>=', aDate);
 		return this;
 	}
@@ -306,7 +306,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition greaterThanAndEqualToDayOnly(SObjectField field, Date aDate) {
+	public QB_QueryCondition greaterThanAndEqualToDayOnly(SObjectField field, Date aDate) {
 		addDayOnlyStatement(field, '>=', aDate);
 		return this;
 	}
@@ -319,7 +319,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
      */
-	public QueryCondition greaterThanAndEqualToDayOnly(String field, Date aDate) {
+	public QB_QueryCondition greaterThanAndEqualToDayOnly(String field, Date aDate) {
 		addDayOnlyStatement(field, '>=', aDate);
 		return this;
 	}
@@ -332,7 +332,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition lessThan(SObjectField field, Integer value) {
+	public QB_QueryCondition lessThan(SObjectField field, Integer value) {
 		addStatement(field, '<', value);
 		return this;
 	}
@@ -345,7 +345,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition lessThan(SObjectField field, Date aDate) {
+	public QB_QueryCondition lessThan(SObjectField field, Date aDate) {
 		addStatement(field, '<', aDate);
 		return this;
 	}
@@ -358,7 +358,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition lessThanAndEqualTo(SObjectField field, Integer value) {
+	public QB_QueryCondition lessThanAndEqualTo(SObjectField field, Integer value) {
 		addStatement(field, '<=', value);
 		return this;
 	}
@@ -371,7 +371,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition lessThanAndEqualTo(SObjectField field, Date aDate) {
+	public QB_QueryCondition lessThanAndEqualTo(SObjectField field, Date aDate) {
 		addStatement(field, '<=', aDate);
 		return this;
 	}
@@ -384,7 +384,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition lessThanAndEqualTo(String value, Date aDate) {
+	public QB_QueryCondition lessThanAndEqualTo(String value, Date aDate) {
 		addStatement(value, '<=', aDate);
 		return this;
 	}
@@ -397,7 +397,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition lessThanAndEqualToDayOnly(SObjectField field, Date aDate) {
+	public QB_QueryCondition lessThanAndEqualToDayOnly(SObjectField field, Date aDate) {
 		addDayOnlyStatement(field, '<=', aDate);
 		return this;
 	}
@@ -410,7 +410,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition lessThanAndEqualToDayOnly(String value, Date aDate) {
+	public QB_QueryCondition lessThanAndEqualToDayOnly(String value, Date aDate) {
 		addDayOnlyStatement(value, '<=', aDate);
 		return this;
 	}
@@ -422,7 +422,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isToday(SObjectField field) {
+	public QB_QueryCondition isToday(SObjectField field) {
 		addStatement(field, '=', Date.today());
 		return this;
 	}
@@ -435,7 +435,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isLike(SObjectField field, String value) {
+	public QB_QueryCondition isLike(SObjectField field, String value) {
 		addStatement(field.getDescribe().getName(), 'LIKE', value);
 		return this;
 	}
@@ -448,7 +448,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return			The current instance of the QueryBuilder
 	 */
-	public QueryCondition isLike(String field, String value) {
+	public QB_QueryCondition isLike(String field, String value) {
 		addStatement(field, 'LIKE', value);
 		return this;
 	}
@@ -461,7 +461,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isIn(SObjectField field, List<Object> values) {
+	public QB_QueryCondition isIn(SObjectField field, List<Object> values) {
 		return isIn(field.getDescribe().getName(), values);
 	}
 
@@ -473,7 +473,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isIn(String field, List<Object> values) {
+	public QB_QueryCondition isIn(String field, List<Object> values) {
 		List<String> valuesStr = new List<String>();
 
 		for(Integer i = 0; i < values.size(); i++) {
@@ -498,7 +498,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isIn(SObjectField field, Set<String> values) {
+	public QB_QueryCondition isIn(SObjectField field, Set<String> values) {
 		isIn(field, new List<String>(values));
 		return this;
 	}
@@ -511,7 +511,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isIn(Object field, Set<String> values) {
+	public QB_QueryCondition isIn(Object field, Set<String> values) {
 		if(field instanceof SObjectField){
 			isIn((SObjectField) field, new List<String>(values));
 		} else if(field instanceof String){
@@ -529,7 +529,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isIn(SObjectField field, Set<Id> values) {
+	public QB_QueryCondition isIn(SObjectField field, Set<Id> values) {
 		isIn(field, new List<Id>(values));
 		return this;
 	}
@@ -542,7 +542,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isIn(String field, Set<Id> values) {
+	public QB_QueryCondition isIn(String field, Set<Id> values) {
 		isIn(field, new List<Id>(values));
 		return this;
 	}
@@ -555,7 +555,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isNotIn(SObjectField field, List<Object> values) {
+	public QB_QueryCondition isNotIn(SObjectField field, List<Object> values) {
 		List<String> valuesStr = new List<String>();
 
 		for(Integer i = 0; i < values.size(); i++) {
@@ -578,7 +578,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isNotIn(SObjectField field, Set<Id> values) {
+	public QB_QueryCondition isNotIn(SObjectField field, Set<Id> values) {
 		isNotIn(field, new List<Id>(values));
 		return this;
 	}
@@ -591,7 +591,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition isNotIn(SObjectField field, Set<String> values) {
+	public QB_QueryCondition isNotIn(SObjectField field, Set<String> values) {
 		isNotIn(field, new List<String>(values));
 		return this;
 	}
@@ -604,7 +604,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition including(SObjectField field, List<String> values) {
+	public QB_QueryCondition including(SObjectField field, List<String> values) {
 		List<String> valuesStr = new List<String>();
 
 		for(Integer i = 0; i < values.size(); i++) {
@@ -623,7 +623,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return		The current instance of the QueryBuilder
 	 */
-	public QueryCondition excluding(SObjectField field, List<String> values) {
+	public QB_QueryCondition excluding(SObjectField field, List<String> values) {
 		List<String> valuesStr = new List<String>();
 
 		for(Integer i = 0; i < values.size(); i++) {
@@ -641,7 +641,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return				The current instance of the QueryBuilder
 	 */
-	public QueryCondition andCondition(QueryCondition condition) {
+	public QB_QueryCondition andCondition(QB_QueryCondition condition) {
 		this.statements.add(' AND ' + condition.toString());
 		return this;
 	}
@@ -653,7 +653,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return				The current instance of the QueryBuilder
 	 */
-	public QueryCondition andGroup(QueryCondition condition) {
+	public QB_QueryCondition andGroup(QB_QueryCondition condition) {
 		this.statements.add(' AND (' + condition.toString() + ')');
 		return this;
 	}
@@ -665,7 +665,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return				The current instance of the QueryBuilder
 	 */
-	public QueryCondition orCondition(QueryCondition condition) {
+	public QB_QueryCondition orCondition(QB_QueryCondition condition) {
 		this.statements.add(' OR ' + condition.toString());
 		return this;
 	}
@@ -677,7 +677,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return				The current instance of the QueryBuilder
 	 */
-	public QueryCondition orGroup(QueryCondition condition) {
+	public QB_QueryCondition orGroup(QB_QueryCondition condition) {
 		this.statements.add(' OR (' + condition.toString() + ')');
 		return this;
 	}
@@ -689,7 +689,7 @@ public class QueryCondition implements QueryConditionI {
 	 *
 	 * @return				The current instance of the QueryBuilder
 	 */
-	public QueryCondition group(QueryCondition condition) {
+	public QB_QueryCondition group(QB_QueryCondition condition) {
 		this.statements.add('(' + condition.toString() + ')');
 		return this;
 	}
@@ -747,10 +747,10 @@ public class QueryCondition implements QueryConditionI {
 		Object isNotIn(SObjectField field, Set<Id> values);						// NOT IN ('0060q00000GqOQU', '0060q00000GqOOl')
 
 		// Logical Operators
-		Object andCondition(QueryCondition condition);							// AND ...
-		Object andGroup(QueryCondition condition);								// AND (...)
-		Object orCondition(QueryCondition condition);							// OR ...
-		Object orGroup(QueryCondition condition);								// OR (...)
-		Object group(QueryCondition condition);									// (...)
+		Object andCondition(QB_QueryCondition condition);							// AND ...
+		Object andGroup(QB_QueryCondition condition);								// AND (...)
+		Object orCondition(QB_QueryCondition condition);							// OR ...
+		Object orGroup(QB_QueryCondition condition);								// OR (...)
+		Object group(QB_QueryCondition condition);									// (...)
 	}
 }
